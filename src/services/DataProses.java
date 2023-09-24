@@ -110,4 +110,23 @@ public class DataProses {
 
     System.out.println("\n" + result + "\n");
   }
+
+  public static double calculateTotalPayroll(List<Employee> listData) {
+    double allowance = 0;
+    double salary = 0;
+
+    for (Employee data : listData) {
+      salary += data.getSalary();
+
+      if (data instanceof Programmer) {
+        allowance += ((Programmer)data).getAllowance();
+      } else if (data instanceof Analyst) {
+        allowance += ((Analyst)data).getAllowance();
+      } else if (data instanceof ProjectLeader) {
+        allowance += ((ProjectLeader)data).getAllowance();
+      }
+    }
+
+    return salary + allowance;
+  }
 }
