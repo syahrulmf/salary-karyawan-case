@@ -55,9 +55,7 @@ public class MenuAction implements IMenu {
           break;
 
         case 6:
-          String queryPlacement = Utility.validateInput("Masukan Kota Penempatan Karyawan (Garut/Bandung/Jakarta/Bekasi/Bogor): ", "Placement tidak valid!", Utility.regexPlacement);
-          DataOutput.printDataEmployee(DataProses.getAllDataByPlacement(queryPlacement), "Data Employee Berdasarkan Placement " + queryPlacement);
-          isLooping = Utility.confirmMenu("Press 0 for Back To Main Menu: ");
+          showMenuSearching();
           break;
 
         case 0:
@@ -70,5 +68,30 @@ public class MenuAction implements IMenu {
     } while(isLooping);
 
     System.out.println("\nAplikasi Berhenti...\n");
+  }
+
+  public static void showMenuSearching() {
+    boolean isLooping = true;
+
+    do {
+      DataOutput.printMenu("Searching Data Karyawan" ,MENU_SEARCHING);
+
+      int pilih = Utility.validateNumberWithRange("Pilih Menu : ", "Inputan harus berupa angka 1 dan 0!", Utility.regexNumber, 1, 0);
+
+      switch (pilih) {
+        case 1:
+          String queryPlacement = Utility.validateInput("Masukan Kota Penempatan Karyawan (Garut/Bandung/Jakarta/Bekasi/Bogor): ", "Placement tidak valid!", Utility.regexPlacement);
+          DataOutput.printDataEmployee(DataProses.getAllDataByPlacement(queryPlacement), "Data Employee Berdasarkan Placement " + queryPlacement);
+          isLooping = Utility.confirmMenu("Press 0 for Back To Menu: ");
+          break;
+
+        case 0:
+          isLooping = false;
+          break;
+
+        default:
+          System.out.println("\nPilihan tidak dimengerti!\n");
+      }
+    } while(isLooping);
   }
 }

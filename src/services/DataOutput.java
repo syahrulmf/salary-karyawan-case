@@ -19,10 +19,10 @@ public class DataOutput {
     System.out.printf(formatTabel, "No", "Employee ID", "Name", "Address", "Age", "Job Desc", "Placement");
     System.out.println("==========================================================================================");
 
-    // iterates over the list
+//     iterates over the list
     for(Employee data: listData){
-        System.out.format(formatTabel, number, data.getEmployeeID(), data.getName(), data.getAddress(), data.getAge(), data.getJobDesc(), data.getPlacement());
-        number++;
+      System.out.format(formatTabel, number, data.getEmployeeID(), data.getName(), data.getAddress(), data.getAge(), data.getJobDesc(), data.getPlacement());
+      number++;
     }
     System.out.println("==========================================================================================");
     System.out.format("| %-3s | %-80s |%n", 0, "Kembali Ke Main Menu");
@@ -51,8 +51,8 @@ public class DataOutput {
       } else {
         allowance = "-";
       }
+      System.out.format(formatTabel, number, data.getEmployeeID(), data.getName(), data.getJobDesc(), data.getPlacement(), (allowance.length() > 1 ? Utility.formatCurency(Double.valueOf(allowance)) : allowance) , Utility.formatCurency(data.getSalary()));
 
-        System.out.format(formatTabel, number, data.getEmployeeID(), data.getName(), data.getJobDesc(), data.getPlacement(), (allowance.length() > 1 ? Utility.formatCurency(Double.valueOf(allowance)) : allowance) , Utility.formatCurency(data.getSalary()));
       number++;
     }
     System.out.println("========================================================================================================");
